@@ -1,4 +1,5 @@
 #ios-test-projects
 
-Completed projects from learning iOS app development
-Tutorial: LondonAppBrewery
+Repository of completed projects from learning iOS app development
+
+Tutorial: London App Brewery
