@@ -11,9 +11,6 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
     let baseURL = "https://apiv2.bitcoinaverage.com/indices/global/ticker/BTC"
     let currencyArray = ["AUD", "BRL","CAD","CNY","EUR","GBP","HKD","IDR","ILS","INR","JPY","MXN","NOK","NZD","PLN","RON","RUB","SEK","SGD","USD","ZAR"]
@@ -24,6 +21,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     //Pre-setup IBOutlets
     @IBOutlet weak var bitcoinPriceLabel: UILabel!
     @IBOutlet weak var currencyPicker: UIPickerView!
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +72,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     /***************************************************************/
     func updateBitconPrice(json : JSON) {
         
-        if let tempResult = json["last"].double {
+        if let tempResult = json["ask"].double {
             bitcoinPriceLabel.text = "\(currencySymbol)\(tempResult)"
+        }
+        else {
+            bitcoinPriceLabel.text = "Price Unavailable"
         }
     }
 }
