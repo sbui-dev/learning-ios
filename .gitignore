@@ -7,3 +7,5 @@ xcuserdata/
 *.xcworkspace
 *.xcuserstate
 *.lock
+
+Pods/
