@@ -9,3 +9,5 @@ xcuserdata/
 *.lock
 
 Pods/
+
+GoogleService-Info.plist
