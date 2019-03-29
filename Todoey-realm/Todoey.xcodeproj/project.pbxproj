@@ -15,6 +15,7 @@
 		66842E32224D8FBC008E6FAA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66842E31224D8FBC008E6FAA /* CategoryViewController.swift */; };
 		66842E36224DD032008E6FAA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66842E35224DD032008E6FAA /* Item.swift */; };
 		66842E38224DD03D008E6FAA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66842E37224DD03D008E6FAA /* Category.swift */; };
+		66842E3C224DEE97008E6FAA /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66842E3B224DEE97008E6FAA /* SwipeTableViewController.swift */; };
 		EB4FFC0C95B83F87633EE8E6 /* Pods_Todoey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0A04863BBB8FD369A0AC579 /* Pods_Todoey.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		66842E31224D8FBC008E6FAA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		66842E35224DD032008E6FAA /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		66842E37224DD03D008E6FAA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		66842E3B224DEE97008E6FAA /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		C0A04863BBB8FD369A0AC579 /* Pods_Todoey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F74CC22B881EFAC91B4CDF4A /* Pods-Todoey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoey.release.xcconfig"; path = "Target Support Files/Pods-Todoey/Pods-Todoey.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			children = (
 				66842E31224D8FBC008E6FAA /* CategoryViewController.swift */,
 				66195C6D224B585A0095CF37 /* ToDoListViewController.swift */,
+				66842E3B224DEE97008E6FAA /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				66842E32224D8FBC008E6FAA /* CategoryViewController.swift in Sources */,
 				66195C6E224B585A0095CF37 /* ToDoListViewController.swift in Sources */,
 				66195C6C224B585A0095CF37 /* AppDelegate.swift in Sources */,
+				66842E3C224DEE97008E6FAA /* SwipeTableViewController.swift in Sources */,
 				66842E38224DD03D008E6FAA /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

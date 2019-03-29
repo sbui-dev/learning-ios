@@ -8,9 +8,8 @@
 
 import UIKit
 import RealmSwift
-import SwipeCellKit
 
-class CategoryViewController: UITableViewController {
+class CategoryViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
@@ -19,7 +18,6 @@ class CategoryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
-        tableView.rowHeight = 80
     }
 
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -44,22 +42,21 @@ class CategoryViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // Mark: - TableView Datasource Methods
+    // MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! SwipeTableViewCell
+
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet"
-        cell.delegate = self
         
         return cell
     }
     
-    // Mark: - TableView Delegate Methods
+    // MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToItems", sender: self)
 
@@ -74,7 +71,7 @@ class CategoryViewController: UITableViewController {
         }
     }
     
-    // Mark: Data Manipulation Methods
+    // MARK: Data Manipulation Methods
     func save(category : Category) {
         do {
             try realm.write {
@@ -93,38 +90,18 @@ class CategoryViewController: UITableViewController {
         
         tableView.reloadData()
     }
-}
-
-// MARK: - Swipe Cell Delegate Methods
-
-extension CategoryViewController : SwipeTableViewCellDelegate {
-
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
-        
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
-
-            if let deleteCategory = self.categories?[indexPath.row] {
-                do {
-                    try self.realm.write {
-                        self.realm.delete(deleteCategory)
-                    }
-                }
-                catch {
-                    print("Error saving done status, \(error)")
+    
+    // MARK: Delete from Swipe
+    override func updateModel(at indexPath: IndexPath) {
+        if let deleteCategory = categories?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(deleteCategory)
                 }
             }
+            catch {
+                print("Error saving done status, \(error)")
+            }
         }
-        
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "Delete-Icon")
-        
-        return [deleteAction]
-    }
-    
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        var options = SwipeOptions()
-        options.expansionStyle = .destructive
-        return options
     }
 }
