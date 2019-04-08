@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     
     private var isFinishedTypingNumber : Bool = true
     
+    private var calculator = CalculatorLogic()
+    
     private var displayValue : Double {
         get {
             
@@ -32,15 +34,12 @@ class ViewController: UIViewController {
         //What should happen when a non-number button is pressed
         isFinishedTypingNumber = true
         
+        calculator.setNumber(displayValue)
+        
         if let calcMethod = sender.currentTitle {
-            if calcMethod == "+/-" {
-                displayValue += -1
-            }
-            else if calcMethod == "AC" {
-                displayLabel.text = "0"
-            }
-            else if calcMethod == "%" {
-                displayValue /= 100
+            
+            if let result = calculator.calculate(symbol : calcMethod) {
+                displayValue = result
             }
         }
     }
