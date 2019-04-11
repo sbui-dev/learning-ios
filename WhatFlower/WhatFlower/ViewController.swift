@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import CoreML
+import Vision
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -19,16 +23,48 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        imagePicker.allowsEditing = false
+        imagePicker.allowsEditing = true
         imagePicker.sourceType = .camera
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let userImage = info[UIImagePickerController.InfoKey.originalImage]
-        
-        imageView.image = userImage as? UIImage
+       
+        if let userImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            guard let ciImage = CIImage(image: userImage) else {
+                fatalError("CIImage conversion failed")
+            }
+            
+            detect(image: ciImage)
+            
+            imageView.image = userImage
+            
+            
+        }
         
         imagePicker.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func detect(image: CIImage) {
+        guard let model = try? VNCoreMLModel(for: FlowerClassifier().model) else {
+            fatalError("Cannot import model")
+        }
+        
+        let request = VNCoreMLRequest(model: model) { (request, error) in
+            let classification = request.results?.first as? VNClassificationObservation
+            
+            self.navigationItem.title = classification?.identifier.capitalized
+        }
+        
+        let handler = VNImageRequestHandler(ciImage: image)
+        
+        do {
+            try handler.perform([request])
+        }
+        catch {
+            print(error)
+        }
     }
     
     @IBAction func cameraPressed(_ sender: UIBarButtonItem) {
