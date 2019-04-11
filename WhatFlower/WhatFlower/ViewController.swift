@@ -14,7 +14,6 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
     let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var imageView: UIImageView!
@@ -52,9 +51,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
         let request = VNCoreMLRequest(model: model) { (request, error) in
-            let classification = request.results?.first as? VNClassificationObservation
+            guard let classification = request.results?.first as? VNClassificationObservation else {
+                fatalError("Couldn't classify image")
+            }
             
-            self.navigationItem.title = classification?.identifier.capitalized
+            //let flowerClassification = classification.identifier.capitalized
+            self.navigationItem.title = classification.identifier.capitalized
+            self.getFlowerData(flowerName: classification.identifier.capitalized)
         }
         
         let handler = VNImageRequestHandler(ciImage: image)
@@ -71,5 +74,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func getFlowerData(flowerName : String) {
+        let wikipediaURl = "https://en.wikipedia.org/w/api.php"
+        
+        let parameters : [String:String] = [
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts",
+            "exintro" : "",
+            "explaintext" : "",
+            "titles" : flowerName,
+            "indexpageids" : "",
+            "redirects" : "1",
+        ]
+        
+        Alamofire.request(wikipediaURl, method : .get, parameters : parameters).responseJSON {
+            response in
+            if response.result.isSuccess {
+                //JSON(response.result.value!)
+                print(response)
+            }
+        }
+    }
 }
 
