@@ -17,6 +17,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var flowerLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,8 +92,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         Alamofire.request(wikipediaURl, method : .get, parameters : parameters).responseJSON {
             response in
             if response.result.isSuccess {
-                //JSON(response.result.value!)
                 print(response)
+                let flowerJSON : JSON = JSON(response.result.value!)
+                
+                let pageid = flowerJSON["query"]["pageids"][0].stringValue
+                let flowerDesc = flowerJSON["query"]["pages"][pageid]["extract"].stringValue
+
+                self.flowerLabel.text = flowerDesc
             }
         }
     }
