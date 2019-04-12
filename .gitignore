@@ -11,3 +11,4 @@ xcuserdata/
 Pods/
 
 GoogleService-Info.plist
+*.mlmodel
