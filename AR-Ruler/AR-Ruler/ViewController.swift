@@ -25,10 +25,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -44,5 +40,30 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touchLocation = touches.first?.location(in: sceneView) {
+            let hitTestResult = sceneView.hitTest(touchLocation, types: .featurePoint)
+            
+            if let hitResult = hitTestResult.first {
+                addDot(at: hitResult)
+            }
+        }
+    }
+    
+    func addDot(at hitResult: ARHitTestResult) {
+        let dotGeomtry = SCNSphere(radius: 0.005)
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.red
+        
+        dotGeomtry.materials = [material]
+        
+        let dotNode = SCNNode(geometry: dotGeomtry)
+        
+        dotNode.position = SCNVector3(hitResult.worldTransform.columns.3.x, hitResult.worldTransform.columns.3.y, hitResult.worldTransform.columns.3.z)
+        
+        sceneView.scene.rootNode.addChildNode(dotNode)
     }
 }
