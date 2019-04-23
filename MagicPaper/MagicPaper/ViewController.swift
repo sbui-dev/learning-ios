@@ -61,18 +61,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
          if let imageAnchor = anchor as? ARImageAnchor {
             
+            // add video
+            let videoNode = SKVideoNode(fileNamed: "harrypotter.mp4")
+            
+            videoNode.play()
+            
+            let videoScene = SKScene(size: CGSize(width: 480, height: 360))
+            
+            // center video on plane
+            videoNode.position = CGPoint(x: videoScene.size.width / 2, y: videoScene.size.height / 2)
+            
+            // flip upside down video right side up
+            videoNode.yScale = -1.0
+            
+            videoScene.addChild(videoNode)
+            
             // create a plane on the card
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
             // makes the plane white and transparent
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5)
+            plane.firstMaterial?.diffuse.contents = videoScene
             
             let planeNode = SCNNode(geometry: plane)
             
+            // make the plane flat
             planeNode.eulerAngles.x = -.pi / 2
             
             node.addChildNode(planeNode)
-            
         }
      
         return node
