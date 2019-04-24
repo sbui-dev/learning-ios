@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     var colorSequence = [Int]()
     var colorsToTap = [Int]()
     
+    var gameEnded = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         colorButtons = colorButtons.sorted() {
@@ -48,7 +50,6 @@ class ViewController: UIViewController {
             button.alpha = 0.5
             button.isEnabled = false
         }
-        
     }
     
     func addNewColor() {
@@ -82,7 +83,26 @@ class ViewController: UIViewController {
     }
 
     @IBAction func colorButtonHandler(_ sender: CircularButton) {
-        print("Button \(sender.tag) tapped")
+        
+        // check if user tap the correct colors
+        if sender.tag == colorsToTap.removeFirst() {
+            
+        }
+        else {
+            for button in colorButtons {
+                button.isEnabled = false
+            }
+            return
+        }
+        
+        // user tapped all the correct colors
+        if colorsToTap.isEmpty {
+            for button in colorButtons {
+                button.isEnabled = false
+            }
+            actionButton.setTitle("Continue", for: .normal)
+            actionButton.isEnabled = true
+        }
     }
     
     @IBAction func actionButtonHandler(_ sender: UIButton) {
