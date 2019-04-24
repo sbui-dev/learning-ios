@@ -56,6 +56,7 @@ class ViewController: UIViewController {
         actionButton.setTitle("Start Game", for: .normal)
         actionButton.isEnabled = true
         
+        // make buttons initially faded
         for button in colorButtons {
             button.alpha = 0.5
             button.isEnabled = false
@@ -83,6 +84,7 @@ class ViewController: UIViewController {
     }
     
     func addNewColor() {
+        // randomly pick a button from 0 to 3
         colorSequence.append(Int(arc4random_uniform(UInt32(4))))
     }
     
@@ -122,9 +124,10 @@ class ViewController: UIViewController {
         
         // check if user tap the correct colors
         if sender.tag == colorsToTap.removeFirst() {
-            
+            // sequences are correct so do nothing
         }
         else {
+            // end game because current player made a mistake
             for button in colorButtons {
                 button.isEnabled = false
             }
@@ -132,14 +135,17 @@ class ViewController: UIViewController {
             return
         }
         
-        // user tapped all the correct colors
+        // player tapped all the correct colors so continue to next round
         if colorsToTap.isEmpty {
             for button in colorButtons {
                 button.isEnabled = false
             }
+            
+            // update score and switch players
             scores[currentPlayer] += 1
             updateScoreLabels()
             switchPlayers()
+            
             actionButton.setTitle("Continue", for: .normal)
             actionButton.isEnabled = true
         }
@@ -155,6 +161,7 @@ class ViewController: UIViewController {
         // disable all UI
         view.isUserInteractionEnabled = false
         
+        // add a new color to the sequence
         addNewColor()
         
         // delay by 1 second
