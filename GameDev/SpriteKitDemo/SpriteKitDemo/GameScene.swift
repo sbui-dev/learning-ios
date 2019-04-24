@@ -46,4 +46,41 @@ class GameScene: SKScene {
         // add blue box to scene
         myFirstSpriteNode.addChild(blueBox)
     }
+ 
+    // different actions
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+ /*
+        // move space ship to top right of red box
+        //myFirstTexturedSpriteNode.run(SKAction.move(to: CGPoint(x: myFirstSpriteNode.size.width, y: myFirstSpriteNode.size.height), duration: 2.0))
+        
+        // rotate blue box
+        //blueBox.run(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 2.0))
+        
+        // move space shipe to top right of red box and reset
+        myFirstTexturedSpriteNode.run(SKAction.move(to: CGPoint(x: myFirstSpriteNode.size.width, y: myFirstSpriteNode.size.height), duration: 2.0)) {
+            self.myFirstTexturedSpriteNode.position = CGPoint.zero
+        }
+        
+        if !blueBox.hasActions() {
+            // rotate blue box forever
+            //blueBox.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 2.0)))
+        
+            // multiple actions at the same time: rotate and scale smaller
+            //blueBox.run(SKAction.group([SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 2.0), SKAction.scale(by: 0.9, duration: 2.0)]))
+            
+            // multiple actions in a sequence: rotate then scale smaller
+            blueBox.run(SKAction.sequence([SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 2.0), SKAction.scale(by: 0.9, duration: 2.0)]))
+        }
+        else {
+            blueBox.removeAllActions()
+        }
+ */
+        // _ doesn't save the action. just checks if it exists
+        if let _ = myFirstTexturedSpriteNode.action(forKey: "Rotation") {
+            myFirstTexturedSpriteNode.removeAction(forKey: "Rotation")
+        }
+        else {
+            myFirstTexturedSpriteNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 2.0)), withKey: "Rotation")
+        }
+    }
 }
