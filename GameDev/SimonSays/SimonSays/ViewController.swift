@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // sort the buttons
         colorButtons = colorButtons.sorted() {
             $0.tag < $1.tag
         }
@@ -40,6 +42,14 @@ class ViewController: UIViewController {
         createNewGame()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // reset game if game has ended
+        if gameEnded {
+            gameEnded = false
+            createNewGame()
+        }
+    }
+    
     func createNewGame() {
         colorSequence.removeAll()
         
@@ -50,6 +60,26 @@ class ViewController: UIViewController {
             button.alpha = 0.5
             button.isEnabled = false
         }
+        
+        // initial values
+        currentPlayer = 0
+        scores = [0,0]
+        playerLabels[currentPlayer].alpha = 1.0
+        playerLabels[1].alpha = 0.75
+        
+        updateScoreLabels()
+    }
+    
+    func updateScoreLabels() {
+        for (index,label) in scoreLabels.enumerated() {
+            label.text = "\(scores[index])"
+        }
+    }
+    
+    func switchPlayers() {
+        playerLabels[currentPlayer].alpha = 0.75
+        currentPlayer =  currentPlayer == 0 ? 1 : 0
+        playerLabels[currentPlayer].alpha = 1.0
     }
     
     func addNewColor() {
@@ -81,6 +111,12 @@ class ViewController: UIViewController {
             self.playSequence()
         }
     }
+    
+    func endGame() {
+        let message = currentPlayer == 0 ? "Player 2 Wins!" : "Player 1 Wins!"
+        actionButton.setTitle(message, for: .normal)
+        gameEnded = true
+    }
 
     @IBAction func colorButtonHandler(_ sender: CircularButton) {
         
@@ -92,6 +128,7 @@ class ViewController: UIViewController {
             for button in colorButtons {
                 button.isEnabled = false
             }
+            endGame()
             return
         }
         
@@ -100,6 +137,9 @@ class ViewController: UIViewController {
             for button in colorButtons {
                 button.isEnabled = false
             }
+            scores[currentPlayer] += 1
+            updateScoreLabels()
+            switchPlayers()
             actionButton.setTitle("Continue", for: .normal)
             actionButton.isEnabled = true
         }
