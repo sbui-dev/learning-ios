@@ -15,6 +15,8 @@
 		6670A15E22704E2C00E88E37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6670A15C22704E2C00E88E37 /* LaunchScreen.storyboard */; };
 		669587A2227176F90001BD92 /* GameSceneAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669587A1227176F80001BD92 /* GameSceneAnimation.swift */; };
 		669587A4227177010001BD92 /* GameSceneExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669587A3227177010001BD92 /* GameSceneExamples.swift */; };
+		669587A6227179620001BD92 /* MyFirstTitleMapScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 669587A5227179620001BD92 /* MyFirstTitleMapScene.sks */; };
+		669587A822717DC10001BD92 /* MyFirstTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 669587A722717DC10001BD92 /* MyFirstTileSet.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		6670A15F22704E2C00E88E37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		669587A1227176F80001BD92 /* GameSceneAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneAnimation.swift; sourceTree = "<group>"; };
 		669587A3227177010001BD92 /* GameSceneExamples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSceneExamples.swift; sourceTree = "<group>"; };
+		669587A5227179620001BD92 /* MyFirstTitleMapScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyFirstTitleMapScene.sks; sourceTree = "<group>"; };
+		669587A722717DC10001BD92 /* MyFirstTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyFirstTileSet.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,8 @@
 				6670A15A22704E2C00E88E37 /* Assets.xcassets */,
 				6670A15C22704E2C00E88E37 /* LaunchScreen.storyboard */,
 				6670A15F22704E2C00E88E37 /* Info.plist */,
+				669587A5227179620001BD92 /* MyFirstTitleMapScene.sks */,
+				669587A722717DC10001BD92 /* MyFirstTileSet.sks */,
 			);
 			path = SpriteKitDemo;
 			sourceTree = "<group>";
@@ -134,6 +140,8 @@
 				6670A15922704E2900E88E37 /* Main.storyboard in Resources */,
 				6670A15B22704E2C00E88E37 /* Assets.xcassets in Resources */,
 				6670A15E22704E2C00E88E37 /* LaunchScreen.storyboard in Resources */,
+				669587A6227179620001BD92 /* MyFirstTitleMapScene.sks in Resources */,
+				669587A822717DC10001BD92 /* MyFirstTileSet.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

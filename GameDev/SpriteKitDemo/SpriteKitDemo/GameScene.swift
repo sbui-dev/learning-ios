@@ -17,4 +17,21 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         print("1")
     }
+    
+    override func didEvaluateActions() {
+        print("2")
+    }
+    
+    override func didSimulatePhysics() {
+        print("3")
+    }
+    
+    override func didApplyConstraints() {
+        print("4")
+    }
+    
+    override func didFinishUpdate() {
+        print("5")
+        isPaused = true
+    }
 }
