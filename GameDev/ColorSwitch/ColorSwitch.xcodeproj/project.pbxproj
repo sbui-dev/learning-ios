@@ -15,6 +15,7 @@
 		66F87A602271979F009DEEEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66F87A5E2271979F009DEEEE /* LaunchScreen.storyboard */; };
 		66F87A6C2271ABC0009DEEEE /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F87A6B2271ABC0009DEEEE /* Settings.swift */; };
 		66F87A6E2271B7A2009DEEEE /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F87A6D2271B7A2009DEEEE /* MenuScene.swift */; };
+		66F87A702271BDE4009DEEEE /* bling.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66F87A6F2271BDE4009DEEEE /* bling.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		66F87A612271979F009DEEEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66F87A6B2271ABC0009DEEEE /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		66F87A6D2271B7A2009DEEEE /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
+		66F87A6F2271BDE4009DEEEE /* bling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bling.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				66F87A612271979F009DEEEE /* Info.plist */,
+				66F87A6F2271BDE4009DEEEE /* bling.wav */,
 				66F87A6A2271A1B5009DEEEE /* Templates */,
 				66F87A692271A18B009DEEEE /* Assets */,
 				66F87A682271A170009DEEEE /* Scenes */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66F87A5B2271979D009DEEEE /* Main.storyboard in Resources */,
+				66F87A702271BDE4009DEEEE /* bling.wav in Resources */,
 				66F87A5D2271979F009DEEEE /* Assets.xcassets in Resources */,
 				66F87A602271979F009DEEEE /* LaunchScreen.storyboard in Resources */,
 			);
