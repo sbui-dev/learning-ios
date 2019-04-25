@@ -1,6 +1,6 @@
 //
 //  GameScene.swift
-//  ColorSwitch
+//  colorSwitch
 //
 //  Created by Steven Bui on 4/25/19.
 //  Copyright © 2019 Steven Bui. All rights reserved.
@@ -23,9 +23,12 @@ enum SwitchState : Int {
 
 class GameScene: SKScene {
 
-    var ColorSwitch : SKSpriteNode!
+    var colorSwitch : SKSpriteNode!
     var switchState = SwitchState.red
     var currentColorIndex : Int?
+    
+    let scoreLabel = SKLabelNode(text: "0")
+    var score = 0
     
     override func didMove(to view: SKView) {
         setupPhysics()
@@ -33,23 +36,34 @@ class GameScene: SKScene {
     }
     
     func setupPhysics() {
-        physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
+        physicsWorld.gravity = CGVector(dx: 0.0, dy: -1.0)
         physicsWorld.contactDelegate = self
     }
     
     func layoutScene() {
         backgroundColor = UIColor(red: 44/255, green: 62/255, blue: 80/255, alpha: 1.0)
         
-        ColorSwitch = SKSpriteNode(imageNamed: "ColorCircle")
-        ColorSwitch.size = CGSize(width: frame.size.width/3, height: frame.size.width/3)
-        ColorSwitch.position = CGPoint(x: frame.midX, y: frame.minY + ColorSwitch.size.height)
-        ColorSwitch.physicsBody = SKPhysicsBody(circleOfRadius: ColorSwitch.size.width/2)
-        ColorSwitch.physicsBody?.categoryBitMask = PhysicsCategories.switchCategory
-        ColorSwitch.physicsBody?.isDynamic = false
+        colorSwitch = SKSpriteNode(imageNamed: "ColorCircle")
+        colorSwitch.size = CGSize(width: frame.size.width/3, height: frame.size.width/3)
+        colorSwitch.position = CGPoint(x: frame.midX, y: frame.minY + colorSwitch.size.height)
+        colorSwitch.zPosition = ZPositions.colorSwitch
+        colorSwitch.physicsBody = SKPhysicsBody(circleOfRadius: colorSwitch.size.width/2)
+        colorSwitch.physicsBody?.categoryBitMask = PhysicsCategories.switchCategory
+        colorSwitch.physicsBody?.isDynamic = false
+        addChild(colorSwitch)
         
-        addChild(ColorSwitch)
+        scoreLabel.fontName = "AvenirNext-Bold"
+        scoreLabel.fontSize = 60.0
+        scoreLabel.fontColor = UIColor.white
+        scoreLabel.position = CGPoint(x: frame.midX, y: frame.midY)
+        scoreLabel.zPosition = ZPositions.label
+        addChild(scoreLabel)
         
         spawnBall()
+    }
+    
+    func updateScoreLabel() {
+        scoreLabel.text = "\(score)"
     }
     
     func spawnBall() {
@@ -59,6 +73,7 @@ class GameScene: SKScene {
         ball.colorBlendFactor = 1 // makes sure color is applied to texture
         ball.name = "Ball"
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
+        ball.zPosition = ZPositions.ball
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
         ball.physicsBody?.categoryBitMask = PhysicsCategories.ballCategory
         ball.physicsBody?.contactTestBitMask = PhysicsCategories.switchCategory
@@ -75,7 +90,7 @@ class GameScene: SKScene {
             switchState = .red
         }
         
-        ColorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
+        colorSwitch.run(SKAction.rotate(byAngle: .pi/2, duration: 0.25))
     }
     
     func gameOver() {
@@ -96,7 +111,9 @@ extension GameScene : SKPhysicsContactDelegate {
         if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
             if let ball = contact.bodyA.node?.name == "Ball" ? contact.bodyA.node as? SKSpriteNode : contact.bodyB.node as? SKSpriteNode {
                 if currentColorIndex == switchState.rawValue {
-                    print("Correct")
+                    
+                    score += 1
+                    updateScoreLabel()
                     
                     ball.run(SKAction.fadeOut(withDuration: 0.25)) {
                         ball.removeFromParent()
