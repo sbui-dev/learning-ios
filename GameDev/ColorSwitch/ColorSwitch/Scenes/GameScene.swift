@@ -19,6 +19,7 @@ class GameScene: SKScene {
     
     func setupPhysics() {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -2.0)
+        physicsWorld.contactDelegate = self
     }
     
     func layoutScene() {
@@ -38,6 +39,7 @@ class GameScene: SKScene {
     
     func spawnBall() {
         let ball = SKSpriteNode(imageNamed: "ball")
+        
         ball.size = CGSize(width: 30.0, height: 30.0)
         ball.position = CGPoint(x: frame.midX, y: frame.maxY)
         ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width/2)
@@ -46,5 +48,17 @@ class GameScene: SKScene {
         ball.physicsBody?.collisionBitMask = PhysicsCategories.none
         
         addChild(ball)
+    }
+}
+
+extension GameScene : SKPhysicsContactDelegate {
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        
+        let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
+        
+        if contactMask == PhysicsCategories.ballCategory | PhysicsCategories.switchCategory {
+            print("contact occured")
+        }
     }
 }
