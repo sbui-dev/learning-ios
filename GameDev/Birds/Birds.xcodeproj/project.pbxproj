@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		66F87A722286950E009DEEEE /* BirdTitleSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66F87A712286950E009DEEEE /* BirdTitleSet.sks */; };
+		66F87A7E22869BC1009DEEEE /* GameCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F87A7D22869BC1009DEEEE /* GameCamera.swift */; };
 		A65DC4961F977BDD00C5F802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DC4951F977BDD00C5F802 /* AppDelegate.swift */; };
 		A65DC4981F977BDD00C5F802 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A65DC4971F977BDD00C5F802 /* GameScene.sks */; };
 		A65DC49C1F977BDD00C5F802 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DC49B1F977BDD00C5F802 /* GameScene.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		66F87A712286950E009DEEEE /* BirdTitleSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BirdTitleSet.sks; sourceTree = "<group>"; };
+		66F87A7D22869BC1009DEEEE /* GameCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCamera.swift; sourceTree = "<group>"; };
 		A65DC4921F977BDD00C5F802 /* Birds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65DC4951F977BDD00C5F802 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65DC4971F977BDD00C5F802 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				A65DC4951F977BDD00C5F802 /* AppDelegate.swift */,
-				A65DC4A71F977BDD00C5F802 /* Info.plist */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -83,6 +84,14 @@
 				66F87A712286950E009DEEEE /* BirdTitleSet.sks */,
 			);
 			name = TitleSets;
+			sourceTree = "<group>";
+		};
+		66F87A7C22869BA3009DEEEE /* Custom Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				66F87A7D22869BC1009DEEEE /* GameCamera.swift */,
+			);
+			name = "Custom Nodes";
 			sourceTree = "<group>";
 		};
 		A65DC4891F977BDD00C5F802 = {
@@ -104,6 +113,8 @@
 		A65DC4941F977BDD00C5F802 /* Birds */ = {
 			isa = PBXGroup;
 			children = (
+				66F87A7C22869BA3009DEEEE /* Custom Nodes */,
+				A65DC4A71F977BDD00C5F802 /* Info.plist */,
 				66F87A7B22869952009DEEEE /* TitleSets */,
 				66F87A7A22869944009DEEEE /* ViewController */,
 				66F87A7922869934009DEEEE /* Template */,
@@ -189,6 +200,7 @@
 			files = (
 				A65DC49C1F977BDD00C5F802 /* GameScene.swift in Sources */,
 				A65DC49E1F977BDD00C5F802 /* GameViewController.swift in Sources */,
+				66F87A7E22869BC1009DEEEE /* GameCamera.swift in Sources */,
 				A65DC4961F977BDD00C5F802 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
