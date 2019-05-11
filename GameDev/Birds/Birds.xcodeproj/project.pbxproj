@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66F87A722286950E009DEEEE /* BirdTitleSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66F87A712286950E009DEEEE /* BirdTitleSet.sks */; };
 		A65DC4961F977BDD00C5F802 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DC4951F977BDD00C5F802 /* AppDelegate.swift */; };
 		A65DC4981F977BDD00C5F802 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A65DC4971F977BDD00C5F802 /* GameScene.sks */; };
 		A65DC49C1F977BDD00C5F802 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65DC49B1F977BDD00C5F802 /* GameScene.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66F87A712286950E009DEEEE /* BirdTitleSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BirdTitleSet.sks; sourceTree = "<group>"; };
 		A65DC4921F977BDD00C5F802 /* Birds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65DC4951F977BDD00C5F802 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A65DC4971F977BDD00C5F802 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				A65DC49D1F977BDD00C5F802 /* GameViewController.swift */,
 				A65DC49F1F977BDD00C5F802 /* Main.storyboard */,
 				A65DC4A21F977BDD00C5F802 /* Assets.xcassets */,
+				66F87A712286950E009DEEEE /* BirdTitleSet.sks */,
 				A65DC4A41F977BDD00C5F802 /* LaunchScreen.storyboard */,
 				A65DC4A71F977BDD00C5F802 /* Info.plist */,
 			);
@@ -132,6 +135,7 @@
 				A65DC4A11F977BDD00C5F802 /* Main.storyboard in Resources */,
 				A65DC4981F977BDD00C5F802 /* GameScene.sks in Resources */,
 				A65DC4A31F977BDD00C5F802 /* Assets.xcassets in Resources */,
+				66F87A722286950E009DEEEE /* BirdTitleSet.sks in Resources */,
 				A65DC4A61F977BDD00C5F802 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
