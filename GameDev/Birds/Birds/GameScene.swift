@@ -18,6 +18,9 @@ class GameScene: SKScene {
     var pinchRecognizer = UIPinchGestureRecognizer()
     var maxScale:CGFloat = 0
     
+    var bird = Bird(type: .red)
+    let anchor = SKNode()
+    
     override func didMove(to view: SKView) {
         setupLevel()
         setupGestureEcognizers()
@@ -38,6 +41,9 @@ class GameScene: SKScene {
         }
 
         addCamera()
+        anchor.position = CGPoint(x: mapNode.frame.midX / 2, y: mapNode.frame.midY / 2)
+        addChild(anchor)
+        addBird()
     }
    
     func addCamera() {
@@ -46,6 +52,11 @@ class GameScene: SKScene {
         gameCamera.position = CGPoint(x: view.bounds.size.width/2, y: view.bounds.size.height/2)
         camera = gameCamera
         gameCamera.setConstraints(with: self, and: mapNode.frame, to: nil)
+    }
+    
+    func addBird() {
+        bird.position = anchor.position
+        addChild(bird)
     }
 }
 
