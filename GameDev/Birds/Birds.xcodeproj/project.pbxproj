@@ -62,7 +62,6 @@
 			children = (
 				A65DC4971F977BDD00C5F802 /* GameScene.sks */,
 				A65DC49B1F977BDD00C5F802 /* GameScene.swift */,
-				66F87A812287D625009DEEEE /* Bird.swift */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -96,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				66F87A7D22869BC1009DEEEE /* GameCamera.swift */,
+				66F87A812287D625009DEEEE /* Bird.swift */,
 			);
 			name = "Custom Nodes";
 			sourceTree = "<group>";
