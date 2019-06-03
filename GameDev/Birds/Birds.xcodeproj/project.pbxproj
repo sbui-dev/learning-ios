@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		660AEEB922A4C88D0039F411 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660AEEB822A4C88D0039F411 /* Block.swift */; };
 		66F87A722286950E009DEEEE /* BirdTitleSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 66F87A712286950E009DEEEE /* BirdTitleSet.sks */; };
 		66F87A7E22869BC1009DEEEE /* GameCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F87A7D22869BC1009DEEEE /* GameCamera.swift */; };
 		66F87A802287D079009DEEEE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66F87A7F2287D079009DEEEE /* Configuration.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		660AEEB822A4C88D0039F411 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		66F87A712286950E009DEEEE /* BirdTitleSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BirdTitleSet.sks; sourceTree = "<group>"; };
 		66F87A7D22869BC1009DEEEE /* GameCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCamera.swift; sourceTree = "<group>"; };
 		66F87A7F2287D079009DEEEE /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				66F87A7D22869BC1009DEEEE /* GameCamera.swift */,
 				66F87A812287D625009DEEEE /* Bird.swift */,
+				660AEEB822A4C88D0039F411 /* Block.swift */,
 			);
 			name = "Custom Nodes";
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A65DC49C1F977BDD00C5F802 /* GameScene.swift in Sources */,
+				660AEEB922A4C88D0039F411 /* Block.swift in Sources */,
 				66F87A802287D079009DEEEE /* Configuration.swift in Sources */,
 				A65DC49E1F977BDD00C5F802 /* GameViewController.swift in Sources */,
 				66F87A7E22869BC1009DEEEE /* GameCamera.swift in Sources */,
