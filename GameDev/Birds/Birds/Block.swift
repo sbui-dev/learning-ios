@@ -35,4 +35,11 @@ class Block: SKSpriteNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    func createPhysicsBody(){
+        physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody?.isDynamic = true
+        physicsBody?.categoryBitMask = PhysicsCategory.block
+        physicsBody?.contactTestBitMask = PhysicsCategory.all
+        physicsBody?.collisionBitMask = PhysicsCategory.all
+    }
 }
